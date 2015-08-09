@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed_z = 30;
 	public float max_x_rotation = 15;
 	public float bounce_rotation = 10;
-	public float speed_z_rotation = 1000;
+	public float speed_z_rotation = 35;
 	public float speed_x_rotation = 4;
 	public Rigidbody rb;
 

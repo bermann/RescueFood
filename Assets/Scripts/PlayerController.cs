@@ -8,11 +8,24 @@ public class PlayerController : MonoBehaviour {
 	public float rotation_on_turn = 1000;
 	public Rigidbody rb;
 
+	public GameObject BulletPrefab;
+	public float bulletSpeed = 60f;
+
 	private float z_rotation = 0;
+
+	float lastShot;
+
+	public float tiempoRefresco = 2f;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		lastShot = Time.time - tiempoRefresco;
+	}
+
+	void Fire() 
+	{
+		GameObject bulletClone = (GameObject) Instantiate(BulletPrefab, transform.position, transform.rotation*Quaternion.Euler(0,180,0));
 	}
 	
 	void FixedUpdate () {
@@ -27,20 +40,19 @@ public class PlayerController : MonoBehaviour {
 		} else if(moveHorizontal > 0 && z_rotation<90) {
 			transform.RotateAround (transform.position,transform.forward,-rotation_on_turn*Time.deltaTime);
 			z_rotation += rotation_on_turn*Time.deltaTime;
+		} else if(moveHorizontal == 0) {
+			transform.RotateAround (transform.position, transform.forward, z_rotation/100);
+			z_rotation -= z_rotation/100;
+			
 		}
 		transform.RotateAround (transform.position, Vector3.up, Time.deltaTime * z_rotation/1.7f);
 
-
-
-		/*if (moveHorizontal < 0) {
-			transform.Rotate (0, -Time.deltaTime * rotate_speed, -(1f+z_rotation)*rotation_on_turn);
-			z_rotation = -1;
-		} else if(moveHorizontal > 0) {
-			transform.Rotate (0f, Time.deltaTime * rotate_speed, (1f-z_rotation)*rotation_on_turn);
-			z_rotation = 1;
-		} else {
-			transform.Rotate (0, Time.deltaTime * rotate_speed, -z_rotation*rotation_on_turn*1f);
-			z_rotation = 0;
-		}*/
+		if (Input.GetButtonDown ("Fire1")) {
+			float timeNow = Time.time;
+			if ((timeNow - lastShot) > tiempoRefresco){
+				lastShot = timeNow;
+				Fire ();
+			}
+		}
 	}
 }

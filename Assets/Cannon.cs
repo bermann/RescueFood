@@ -21,10 +21,10 @@ public class Cannon : MonoBehaviour {
 	float shootAngle = 45f;  // elevation angle
 	float minDist = 200f;
 
-	float lastShot = -5f;
+	float lastShot = -2f;
 
 	void Update(){
-		if (Vector3.Distance(transform.position, myTarget.position) < minDist && (Time.time - lastShot) > 5f){  // press b to shoot
+		if (Vector3.Distance(transform.position, myTarget.position) < minDist && (Time.time - lastShot) > 2f){  // press b to shoot
 			lastShot = Time.time;
 			GameObject ball = (GameObject) Instantiate(cannonball, transform.position, Quaternion.identity);
 			Rigidbody ballRB = (Rigidbody) ball.GetComponent<Rigidbody>();

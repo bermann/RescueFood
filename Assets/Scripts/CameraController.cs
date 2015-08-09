@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
 
 		//transform.position = player.transform.position + new Vector3 (0f,0f,offset_z);
 		
-		transform.position = player.transform.position + player.transform.forward *-1 * distance_to_player+Vector3.up * 1.3f;
+		transform.position = player.transform.position + player.transform.forward *-1 * distance_to_player+Vector3.up * 5f;
 		transform.LookAt(player.transform.position);
 	}
 }

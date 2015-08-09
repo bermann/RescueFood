@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 956df86bd8d399749a58f01576a2a157
-timeCreated: 1439102413
+guid: f54f6ee9c17427045a5dae4f63513c50
+timeCreated: 1439111251
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -37,9 +37,10 @@ ModelImporter:
     100058: Bone029
     100060: Bone030
     100062: Bone031
-    100064: cuerpo_enano001
-    100066: Object004
-    100068: Plane001
+    100064: chancoql
+    100066: cuerpo_enano001
+    100068: Object004
+    100070: Plane001
     400000: //RootNode
     400002: Bone001
     400004: Bone002
@@ -72,12 +73,13 @@ ModelImporter:
     400058: Bone029
     400060: Bone030
     400062: Bone031
-    400064: cuerpo_enano001
-    400066: Object004
-    400068: Plane001
-    4300000: cuerpo_enano001
+    400064: chancoql
+    400066: cuerpo_enano001
+    400068: Object004
+    400070: Plane001
+    4300000: Plane001
     4300002: Object004
-    4300004: Plane001
+    4300004: cuerpo_enano001
     9500000: //RootNode
     13700000: cuerpo_enano001
     13700002: Object004

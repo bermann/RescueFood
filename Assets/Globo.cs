@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Globo : MonoBehaviour {
 
-	float verticalSpeed = 8f;
+	float verticalSpeed = 3f;
 
 
 	// Use this for initialization
@@ -14,15 +14,9 @@ public class Globo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Translate (transform.up*verticalSpeed*Time.deltaTime);
+		if (transform.position.y >= 160)
+			Destroy (gameObject);
 	}
 
-	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "PlayerBullet") {
-			//GOT IT!
-			GameObject globo = transform.FindChild("Globo").gameObject;
-			GameObject regalo = transform.FindChild("Regalo").gameObject;
-			globo.SetActive(false);
-			regalo.GetComponent<Rigidbody>().useGravity = true;
-		}
-	}
+
 }

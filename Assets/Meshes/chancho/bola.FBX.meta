@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 75fa0701cc617e24a89e7ee991f1f988
-timeCreated: 1439099322
+guid: 956df86bd8d399749a58f01576a2a157
+timeCreated: 1439102413
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -78,7 +78,6 @@ ModelImporter:
     4300000: cuerpo_enano001
     4300002: Object004
     4300004: Plane001
-    7400000: Take 001
     9500000: //RootNode
     13700000: cuerpo_enano001
     13700002: Object004
@@ -108,7 +107,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

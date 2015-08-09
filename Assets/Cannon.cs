@@ -12,19 +12,19 @@ public class Cannon : MonoBehaviour {
 		dir.y = dist * Mathf.Tan(a);  // set dir to the elevation angle
 		dist += h / Mathf.Tan(a);  // correct for small height differences
 		// calculate the velocity magnitude
-		float vel = 150f;
+		float vel = 200f;
 		return vel * dir.normalized;
 	}
 	
 	public Transform myTarget;  // drag the target here
 	public GameObject cannonball;  // drag the cannonball prefab here
 	float shootAngle = 45f;  // elevation angle
-	float minDist = 200f;
+	float minDist = 300f;
 
-	float lastShot = -2f;
+	float lastShot = -1f;
 
 	void Update(){
-		if (Vector3.Distance(transform.position, myTarget.position) < minDist && (Time.time - lastShot) > 2f){  // press b to shoot
+		if (Vector3.Distance(transform.position, myTarget.position) < minDist && (Time.time - lastShot) > 1f){  // press b to shoot
 			lastShot = Time.time;
 			GameObject ball = (GameObject) Instantiate(cannonball, transform.position, Quaternion.identity);
 			Rigidbody ballRB = (Rigidbody) ball.GetComponent<Rigidbody>();

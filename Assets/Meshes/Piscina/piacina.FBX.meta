@@ -1,24 +1,30 @@
 fileFormatVersion: 2
-guid: 6e52deb8f0a94de4e986f6284b8e1c85
-timeCreated: 1439079829
+guid: 88d3d9fa01554984389d7ceb41d61ba8
+timeCreated: 1439122672
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
     100002: Rectangle001
-    100004: Rectangle002
+    100004: Rectangle003
+    100006: Rectangle004
     400000: //RootNode
     400002: Rectangle001
-    400004: Rectangle002
+    400004: Rectangle003
+    400006: Rectangle004
     2300000: Rectangle001
-    2300002: Rectangle002
+    2300002: Rectangle003
+    2300004: Rectangle004
     3300000: Rectangle001
-    3300002: Rectangle002
+    3300002: Rectangle003
+    3300004: Rectangle004
     4300000: Rectangle001
-    4300002: Rectangle002
+    4300002: Rectangle003
+    4300004: Rectangle004
     6400000: Rectangle001
-    6400002: Rectangle002
+    6400002: Rectangle003
+    6400004: Rectangle004
     9500000: //RootNode
   materials:
     importMaterials: 1

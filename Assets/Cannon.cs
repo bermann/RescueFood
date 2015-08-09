@@ -18,17 +18,27 @@ public class Cannon : MonoBehaviour {
 	float minDist = 200f;
 	
 	float lastShot = -3f;
-	
+
+	float timeOfDeath = 0f;
+
 	void Update(){
-		if (Vector3.Distance(transform.position, myTarget.position) < minDist && (Time.time - lastShot) > 3f){  // press b to shoot
-			AudioSource newShot = gameObject.AddComponent<AudioSource>();
+		if (gameObject.activeSelf && Vector3.Distance (transform.position, myTarget.position) < minDist && (Time.time - lastShot) > 3f) {  // press b to shoot
+			AudioSource newShot = gameObject.AddComponent<AudioSource> ();
 			newShot.clip = shot.clip;
-			newShot.Play();
+			newShot.Play ();
 			lastShot = Time.time;
-			GameObject ball = (GameObject) Instantiate(cannonball, transform.position, Quaternion.identity);
-			Rigidbody ballRB = (Rigidbody) ball.GetComponent<Rigidbody>();
-			ballRB.velocity = BallisticVel(myTarget);
-			Destroy(ball, 5);
+			GameObject ball = (GameObject)Instantiate (cannonball, transform.position, Quaternion.identity);
+			Rigidbody ballRB = (Rigidbody)ball.GetComponent<Rigidbody> ();
+			ballRB.velocity = BallisticVel (myTarget);
+			Destroy (ball, 5);
+		} else if (!gameObject.activeSelf) {
+			if ((Time.time - timeOfDeath) > 5f && timeOfDeath != 0f){
+				gameObject.SetActive (true);
+			}
 		}
+	}
+
+	public void Die() {
+		gameObject.SetActive (false);
 	}
 }

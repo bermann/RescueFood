@@ -3,11 +3,14 @@ using System.Collections;
 
 public class KillOnTouch : MonoBehaviour {
 	
+	public static KillOnTouch self;
+	
 	private float id;
 	private bool alertIsPlaying = false;
 	
 	void Start(){
 		id = Random.Range (0, 1);
+		self = this;
 	}
 	
 	void Update(){ 

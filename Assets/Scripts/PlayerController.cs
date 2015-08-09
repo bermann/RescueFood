@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 	private bool inHit = false;
 	private int vibrationTime = 0;
 	private int vibrationSign = -1;
-	private float inicialZRotation = 0;
+	private float deltaZRotation = 0;
 	
 	
 	public static int score = 0;
@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour {
 	public Image life1;
 	public Image life2;
 	public Image life3;
+	public Image alertLight;
 	public Text scoreText;
 	
 	//SOUNDS
@@ -73,12 +74,14 @@ public class PlayerController : MonoBehaviour {
 			alertDictionary.Add (id, 0);
 		}
 		alert.Play ();
+		alertLight.enabled = true;
 	}
 	
 	public void StopAlert (float id){
 		alertDictionary.Remove (id);
 		if (alertDictionary.Count == 0) {
 			alert.Stop ();
+			alertLight.enabled = false;
 		}
 	}
 	
@@ -89,6 +92,7 @@ public class PlayerController : MonoBehaviour {
 		if (PlayerController.self == null) {
 			PlayerController.self = this;
 		}
+		alertLight.enabled = false;
 	}
 	
 	void Fire()
@@ -203,28 +207,39 @@ public class PlayerController : MonoBehaviour {
 		
 		if (inBarrel) {
 			float barrel = -400 * Time.deltaTime;
-			transform.RotateAround (transform.position, transform.forward, barrel*barrelSign);
+			if((barrelDegrees - barrel) > 360f){
+				if(barrelSign == 1){
+					transform.RotateAround (transform.position, transform.forward, 360f-barrelDegrees);
+				}else{
+					transform.RotateAround (transform.position, transform.forward, barrelDegrees-360f);
+				}
+			}else{
+				transform.RotateAround (transform.position, transform.forward, barrel*barrelSign);
+			}
 			barrelDegrees -= barrel;
+			
 			if (barrelDegrees >= 360) {
-				transform.RotateAround (transform.position, transform.forward, (360f-barrelDegrees));
 				barrelDegrees = 0;
 				inBarrel = false;
 			}
 		}
 		
+		/*
 		if (inHit) {
-			if(vibrationTime == 3){
+			if(vibrationTime == 65){
 				inHit = false;
 				vibrationTime = 0;
+				transform.RotateAround (transform.position, transform.forward, deltaZRotation);
+				deltaZRotation = 0;
 			}
-			if(Mathf.Abs(inicialZRotation - z_rotation) > 20){
-				vibrationTime += 1;
+			if((vibrationTime % 3) == 0){
 				vibrationSign *= -1;
 			}
 			transform.RotateAround (transform.position, transform.forward, 700*Time.deltaTime*vibrationSign);
-			z_rotation -= 300*Time.deltaTime*vibrationSign;
+			deltaZRotation -= 700*Time.deltaTime*vibrationSign;
+			vibrationTime += 1;
 			
-		}
+		}*/
 		
 		if (Input.GetKeyDown ("space")) {
 			float timeNow = Time.time;
@@ -258,7 +273,7 @@ public class PlayerController : MonoBehaviour {
 				Application.LoadLevel("game over");
 			}
 			inHit = true;
-			inicialZRotation = z_rotation;
+			CameraController.self.Hitted();
 			lastBarrel = Time.time;
 			lifes -= 1;
 		}

@@ -8,11 +8,11 @@ public class ItemSpawner : MonoBehaviour {
 	float lastSpawned;
 	float spawnTime = 10f;
 
-	float minX = 188f;
-	float maxX = 898f;
+	float minX = 42f;
+	float maxX = 923f;
 
-	float minZ = 30f;
-	float maxZ = 460f;
+	float minZ = -348f;
+	float maxZ = 450f;
 
 	// Use this for initialization
 	void Start () {
